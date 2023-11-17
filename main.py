@@ -6,6 +6,8 @@ from random import randrange
 import configparser
 import logging
 
+import sys
+
 from telethon.sync import TelegramClient, errors
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors.rpcerrorlist import SessionPasswordNeededError, ChannelsTooMuchError, ChannelInvalidError, ChannelPrivateError
@@ -35,7 +37,6 @@ api_hash = config['Telegram']['api_hash']
 BASE_DIR = Path(__file__).resolve().parent
 CHANNELS_DIRECTORY = './channels'
 SESSIONS_DIRECTORY = './sessions'
-FILE_PATH = os.path.join(CHANNELS_DIRECTORY, 'channels.txt')
 LOG_FILE = os.path.join(logs_directory, 'logs.log')
 
 
@@ -50,34 +51,31 @@ def error_processing(channel, message):
 
 
 def joining_a_group(client, num, phone):
-    li = read_channel_list()
+    print('Введите каналы, разделяя каждый новым каналом и нажимая Enter после каждого (Ctrl+D для завершения ввода):')
+    channels_input = sys.stdin.read()
+    channels = [chan.strip() for chan in channels_input.split('\n') if chan.strip()]
 
-    const = len(li) // num
     count_step = 0
     count_sub_chats = 0
     list_nosub_chats = []
 
+
     logging.info(f'{datetime.now()}: Начал вступление в группы для номера телефона {phone}.')
 
-    for e in range(0, len(li), num):
+    for e in range(0, len(channels), num):
         count_step += 1
-        if count_step <= const:
-            count_sub_chats, list_nosub_chats = join_channels(client, li[e:e + num], count_sub_chats, list_nosub_chats, phone)
+        if count_step <= len(channels) // num:
+            count_sub_chats, list_nosub_chats = join_channels(client, channels[e:e + num], count_sub_chats, list_nosub_chats, phone)
             sleep()
         else:
-            count_sub_chats, list_nosub_chats = join_channels(client, li[e:e + num], count_sub_chats, list_nosub_chats, phone)
+            count_sub_chats, list_nosub_chats = join_channels(client, channels[e:e + num], count_sub_chats, list_nosub_chats, phone)
             sleep()
 
-    write_nosub_channels(list_nosub_chats)
+    write_nosub_channels(list_nosub_chats, phone)
 
     end = datetime.now()
     logging.info(f'{datetime.now()}: Завершил вступление в группы для номера телефона {phone}. '
-                 f'Потрачено времени: {end - start}. Вступил в {count_sub_chats} чатов из {len(li)}.')
-
-
-def read_channel_list():
-    with open(FILE_PATH) as file_channels:
-        return file_channels.read().split('\n')
+                 f'Потрачено времени: {end - start}. Вступил в {count_sub_chats} чатов из {len(channels)}.')
 
 
 def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
@@ -128,8 +126,9 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
     return count_sub_chats, list_nosub_chats
 
 
-def write_nosub_channels(channels):
-    with open(os.path.join(CHANNELS_DIRECTORY, 'nosub_channels.txt'), 'w') as file_nosub_channels:
+def write_nosub_channels(channels, phone):
+    filename = f'{phone}_nosub_channels.txt'
+    with open(os.path.join(CHANNELS_DIRECTORY, filename), 'w') as file_nosub_channels:
         for i in channels:
             file_nosub_channels.write(f'{i}\n')
 
