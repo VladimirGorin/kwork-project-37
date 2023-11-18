@@ -96,6 +96,7 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
             print(status)
             log_status(phone, i, status)
             time.sleep(randrange(10, 20, 1))
+            continue
         except errors.FloodWaitError as e:
             error_processing(i, 'Не прошел по таймингам. Вступит в чат чуть-чуть позднее!')
             print(f'{datetime.now()}: Уснет сейчас на {e.seconds + 10}')
@@ -106,6 +107,7 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
             print(status)
             log_status(phone, i, status)
             time.sleep(randrange(10, 20, 1))
+            continue
         except ChannelInvalidError:
             error_processing(i, 'Неверный объект канала.')
             list_nosub_chats.append(i)
@@ -136,7 +138,7 @@ def write_nosub_channels(channels, phone):
 def log_status(phone, channel, status):
     with open(LOG_FILE, 'a', encoding='utf-8') as log_file:
         log_file.write(f'{datetime.now()}: Номер телефона {phone}, Канал {channel}, {status}\n')
-        
+
 if __name__ == '__main__':
     start = datetime.now()
     print(f'{datetime.now()}: Начал работу')
