@@ -15,7 +15,7 @@ from telethon.errors.rpcerrorlist import SessionPasswordNeededError, ChannelsToo
 # Configure logging
 logs_directory = './logs'
 os.makedirs(logs_directory, exist_ok=True)
-logging.basicConfig(filename=os.path.join(logs_directory, 'errors.log'), level=logging.ERROR)
+logging.basicConfig(filename=os.path.join(logs_directory, 'errors.log'), level=logging.ERROR, encoding='utf-8')
 
 # Load configuration from config.ini
 config = configparser.ConfigParser()
@@ -47,8 +47,8 @@ def sleep():
 
 
 def error_processing(channel, message):
-    logging.error(f'{datetime.now()}: Канал {channel}, {message}.')
-
+    frame_info = sys._getframe(1)
+    logging.error(f'{datetime.now()}: Канал {channel}, {message}. Line {frame_info.f_lineno}')
 
 def joining_a_group(client, num, phone):
     print('Введите каналы, разделяя каждый новым каналом и нажимая Enter после каждого (Ctrl+Z а затем ENTER для завершения ввода):')
@@ -128,16 +128,15 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
 
 def write_nosub_channels(channels, phone):
     filename = f'{phone}_nosub_channels.txt'
-    with open(os.path.join(CHANNELS_DIRECTORY, filename), 'w') as file_nosub_channels:
+    with open(os.path.join(CHANNELS_DIRECTORY, filename), 'w', encoding='utf-8') as file_nosub_channels:
         for i in channels:
             file_nosub_channels.write(f'{i}\n')
 
 
 def log_status(phone, channel, status):
-    with open(LOG_FILE, 'a') as log_file:
+    with open(LOG_FILE, 'a', encoding='utf-8') as log_file:
         log_file.write(f'{datetime.now()}: Номер телефона {phone}, Канал {channel}, {status}\n')
-
-
+        
 if __name__ == '__main__':
     start = datetime.now()
     print(f'{datetime.now()}: Начал работу')
@@ -146,18 +145,21 @@ if __name__ == '__main__':
 
     phone = input('Введите номер телефона: ')
     session_file = os.path.join(SESSIONS_DIRECTORY, f'{phone}.session')
+    
+    try:
+        client = TelegramClient(session_file, api_id, api_hash)
+        client.connect()
 
-    client = TelegramClient(session_file, api_id, api_hash)
-    client.connect()
+        if not client.is_user_authorized():
+            client.send_code_request(phone)
+            try:
+                client.sign_in(phone, input('Введите код, который прислал телеграм: '))
+            except SessionPasswordNeededError:
+                client.sign_in(password=input('Введите код 2FA телеграм: '))
 
-    if not client.is_user_authorized():
-        client.send_code_request(phone)
-        try:
-            client.sign_in(phone, input('Введите код, который прислал телеграм: '))
-        except SessionPasswordNeededError:
-            client.sign_in(password=input('Введите код 2FA телеграм: '))
+        joining_a_group(client, 5, phone)
+        client.disconnect()
 
-    joining_a_group(client, 5, phone)
-    client.disconnect()
-
-    print(f'{datetime.now()}: Завершил работу')
+        print(f'{datetime.now()}: Завершил работу')
+    except ConnectionError:
+        print("Требуется сменить api_hash, api_id")
