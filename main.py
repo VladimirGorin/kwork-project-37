@@ -51,7 +51,7 @@ def error_processing(channel, message):
 
 
 def joining_a_group(client, num, phone):
-    print('Введите каналы, разделяя каждый новым каналом и нажимая Enter после каждого (Ctrl+D для завершения ввода):')
+    print('Введите каналы, разделяя каждый новым каналом и нажимая Enter после каждого (Ctrl+Z а затем ENTER для завершения ввода):')
     channels_input = sys.stdin.read()
     channels = [chan.strip() for chan in channels_input.split('\n') if chan.strip()]
 
@@ -142,7 +142,6 @@ if __name__ == '__main__':
     start = datetime.now()
     print(f'{datetime.now()}: Начал работу')
 
-    # Create a directory for storing sessions
     os.makedirs(SESSIONS_DIRECTORY, exist_ok=True)
 
     phone = input('Введите номер телефона: ')
