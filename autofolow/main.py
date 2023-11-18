@@ -91,23 +91,11 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
             error_processing(i, 'Много входов в группы.')
             sleep()
             client(JoinChannelRequest(channel=i))
-            count_sub_chats += 1
-            status = f'{datetime.now()}: ({count_sub_chats}) Подписался на канал {i}'
-            print(status)
-            log_status(phone, i, status)
-            time.sleep(randrange(10, 20, 1))
-            continue
         except errors.FloodWaitError as e:
-            error_processing(i, 'Не прошел по таймингам. Вступит в чат чуть-чуть позднее!')
+            error_processing(i, f'Не прошел по таймингам. Вступит в чат чуть-чуть позднее! Пауза: {e.seconds + 10}')
             print(f'{datetime.now()}: Уснет сейчас на {e.seconds + 10}')
             time.sleep(e.seconds + 10)
-            client(JoinChannelRequest(channel=i))
-            count_sub_chats += 1
-            status = f'{datetime.now()}: ({count_sub_chats}) Подписался на канал {i}'
-            print(status)
-            log_status(phone, i, status)
-            time.sleep(randrange(10, 20, 1))
-            continue
+            continue  # Continue to the next iteration without increasing count_sub_chats
         except ChannelInvalidError:
             error_processing(i, 'Неверный объект канала.')
             list_nosub_chats.append(i)
@@ -120,10 +108,21 @@ def join_channels(client, channels, count_sub_chats, list_nosub_chats, phone):
             error_processing(i, 'Неверное название канала.')
             list_nosub_chats.append(i)
             continue
+        except errors.InviteRequestSentError:
+            error_processing(i, 'Вы уже отправили запрос на вступление в этот чат или канал.')
+            list_nosub_chats.append(i)
+            continue
         except Exception as e:
             error_processing(i, f'Название канала {i} неверно, либо не существует')
             list_nosub_chats.append(i)
             continue
+
+        # This block will only be reached if there is no exception
+        count_sub_chats += 1
+        status = f'{datetime.now()}: ({count_sub_chats}) Подписался на канал {i}'
+        print(status)
+        log_status(phone, i, status)
+        time.sleep(randrange(10, 20, 1))
 
     return count_sub_chats, list_nosub_chats
 
