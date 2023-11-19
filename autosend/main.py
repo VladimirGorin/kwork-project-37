@@ -32,10 +32,12 @@ def dialog_sort(dialog):
     return dialog.unread_count
 
 
-def log_delivery_status(phone, dialog_name, status):
+def log_delivery_status(phone, dialog_name, status, channel_link=None):
     log_file = f'./logs/{phone}.log'  
     with open(log_file, 'a', encoding='utf-8') as log:
         log.write(f'Дата: {datetime.now()}, Диалог: {dialog_name}, Статус: {status}\n')
+        if channel_link:
+            log.write(f'Ссылка на канал: {channel_link}\n')
 
 
 def spammer(client, phone):
@@ -63,12 +65,12 @@ def spammer(client, phone):
                     delivered_message = client.get_messages(g, ids=forward_message_id)
                     try:
                         if delivered_message and delivered_message.date:
-                            log_delivery_status(phone, g.name, 'Доставлено')
+                            log_delivery_status(phone, g.name, 'Доставлено', channel_link=g.username)
                             k = k + 1
                         else:
-                            log_delivery_status(phone, g.name, 'Не доставлено')
+                            log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.username)
                     except AttributeError:
-                        log_delivery_status(phone, g.name, 'Не доставлено')
+                        log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.username)
 
                 except errors.ForbiddenError as o:
                     client.delete_dialog(g)
