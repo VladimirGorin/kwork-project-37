@@ -65,12 +65,12 @@ def spammer(client, phone):
                     delivered_message = client.get_messages(g, ids=forward_message_id)
                     try:
                         if delivered_message and delivered_message.date:
-                            log_delivery_status(phone, g.name, 'Доставлено', channel_link=g.username)
+                            log_delivery_status(phone, g.name, 'Доставлено', channel_link=g.entity.username)
                             k = k + 1
                         else:
-                            log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.username)
+                            log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.entity.username)
                     except AttributeError:
-                        log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.username)
+                        log_delivery_status(phone, g.name, 'Не доставлено', channel_link=g.entity.username)
 
                 except errors.ForbiddenError as o:
                     client.delete_dialog(g)
