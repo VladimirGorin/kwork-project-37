@@ -46,8 +46,10 @@ def spammer(client, phone):
 
     def create_groups_list(groups=[]):
         for dialog in client.iter_dialogs():
-            if dialog.is_group and dialog.unread_count >= 1:
-                groups.append(dialog)
+            if dialog.is_group:
+                groups.append(dialog)    
+            # if dialog.is_group and dialog.unread_count >= 1:
+            #     groups.append(dialog)
         return groups
 
     with client:
