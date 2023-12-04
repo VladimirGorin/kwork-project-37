@@ -62,7 +62,15 @@ def spammer(client, phone):
             for g in groups[:10000]:
                 try:
                     forward_message = client.forward_messages(g, msg, 'me')
-                    forward_message_id = forward_message.id
+                    try:
+                        forward_message_id = forward_message.id
+                    except AttributeError:
+                        try:
+                            forward_message_id = forward_message[0].id
+                        except Exception as e:
+                            error_message = f'Error: {e} ошибка при получении проверки доставки сообщения'
+                            logging.error(error_message)
+                            print(error_message)
 
                     delivered_message = client.get_messages(g, ids=forward_message_id)
                     try:
