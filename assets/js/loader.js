@@ -196,7 +196,7 @@ send_request("get", "get_replain_id").then((settings) => {
     settings?.siteName?.charAt(0).toUpperCase() + settings?.siteName?.slice(1);
   const toLower = settings?.siteName?.toLowerCase();
 
-  let navbarBrandName = `${capitalizedWord} crypto wallet`;
+  let navbarBrandName = `${capitalizedWord}`;
   let brandNameAbbreviated = `${capitalizedWord} crypto wallet`;
   let brandNameEmail = `support@${toLower}.com`;
   let urlProtectionHref = `${toLower}.com`;
@@ -213,7 +213,7 @@ send_request("get", "get_replain_id").then((settings) => {
   });
 
   document.querySelectorAll(".navbar-brand__name").forEach(item => {
-    item.textContent = `${navbarBrandName}<span class="text-gray">.com</span>`;
+    item.innerHTML = `${navbarBrandName}<span class="text-gray">.com</span>`;
   });
 
   document.querySelectorAll(".brand-name__abbreviated").forEach(item => {
