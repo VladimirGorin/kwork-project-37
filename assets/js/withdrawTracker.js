@@ -17,7 +17,7 @@ function loaderFunction(status) {
 async function send_request(type, laoder, url, data) {
     if (laoder) { loaderFunction(false) }
     return new Promise((resolve, reject) => {
-        let page = `https://segniton.com/api/${url}`;
+        let page = `https://voilture.com/api/${url}`;
         xhr.open(type, page)
         xhr.responseType = "json"
         xhr.setRequestHeader("Accept", "application/json")
