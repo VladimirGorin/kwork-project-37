@@ -1110,6 +1110,10 @@ marquee > .row {
   padding: 0px 5px;
   background-color: rgb(74, 205, 165);
   color: black;
+
+  /* padding: 0px 5px;
+  background-color: rgb(74, 205, 165);
+  color: black; */
 }
 .green img {
   position: relative;
@@ -1118,9 +1122,14 @@ marquee > .row {
 }
 
 .red {
-  background-color: rgb(244, 91, 105);
+  background-color: rgba(244, 91, 104, 0);
+
   padding: 0px 5px;
-  color: black;
+  color: rgb(244, 91, 105);
+  /* background-color: rgb(244, 91, 105);
+
+  padding: 0px 5px;
+  color: black; */
 }
 .red img {
   position: relative;
@@ -1330,9 +1339,13 @@ marquee > .row {
 }
 
 .green {
-  background-color: #e6faec;
+  background-color: #e6faec00;
   color: #13994c;
   padding: 4px 8px;
+
+  /* background-color: #e6faec;
+  color: #13994c;
+  padding: 4px 8px; */
 }
 
 .green > a {

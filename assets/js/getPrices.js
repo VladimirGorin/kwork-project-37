@@ -1,181 +1,181 @@
 let tickers = [
 	{
-		name: 'Bitcoin/USD',
-		symbol: 'BTC-USD'
+		name: 'Bitcoin/EUR',
+		symbol: 'BTC-EUR'
 	},
 	{
-		name: 'Stellar/USD',
-		symbol: 'XLM-USD'
+		name: 'Stellar/EUR',
+		symbol: 'XLM-EUR'
 	},
 	{
-		name: 'Ethereum/USD',
-		symbol: 'ETH-USD'
+		name: 'Ethereum/EUR',
+		symbol: 'ETH-EUR'
 	},
 	{
-		name: 'Tether/USD',
-		symbol: 'USDT-USD'
+		name: 'Tether/EUR',
+		symbol: 'EURT-EUR'
 	},
 	{
-		name: 'Binance Coin/USD',
-		symbol: 'BNB-USD'
+		name: 'Binance Coin/EUR',
+		symbol: 'BNB-EUR'
 	},
 	{
-		name: 'USD Coin/USD',
-		symbol: 'USDC-USD'
+		name: 'EUR Coin/EUR',
+		symbol: 'EURC-EUR'
 	},
 	{
-		name: 'XRP/USD',
-		symbol: 'XRP-USD'
+		name: 'XRP/EUR',
+		symbol: 'XRP-EUR'
 	},
 	{
-		name: 'Cardano/USD',
-		symbol: 'ADA-USD'
+		name: 'Cardano/EUR',
+		symbol: 'ADA-EUR'
 	},
 	{
-		name: 'Aptos/USD',
-		symbol: 'APT-USD'
+		name: 'Aptos/EUR',
+		symbol: 'APT-EUR'
 	},
 	{
-		name: 'Polygon/USD',
-		symbol: 'MATIC-USD'
+		name: 'Polygon/EUR',
+		symbol: 'MATIC-EUR'
 	},
 	{
-		name: 'OKB/USD',
-		symbol: 'OKB-USD'
+		name: 'OKB/EUR',
+		symbol: 'OKB-EUR'
 	},
 	{
-		name: 'Solana/USD',
-		symbol: 'SOL-USD'
+		name: 'Solana/EUR',
+		symbol: 'SOL-EUR'
 	},
 	{
-		name: 'Dogecoin/USD',
-		symbol: 'DOGE-USD'
+		name: 'Dogecoin/EUR',
+		symbol: 'DOGE-EUR'
 	},
 	{
-		name: 'Staked Ether/USD',
-		symbol: 'STETH-USD'
+		name: 'Staked Ether/EUR',
+		symbol: 'STETH-EUR'
 	},
 	{
-		name: 'Polkadot/USD',
-		symbol: 'DOT-USD'
+		name: 'Polkadot/EUR',
+		symbol: 'DOT-EUR'
 	},
 	{
-		name: 'Chainlink/USD',
-		symbol: 'LINK-USD'
+		name: 'Chainlink/EUR',
+		symbol: 'LINK-EUR'
 	},
 	{
-		name: 'Avalanche/USD',
-		symbol: 'AVAX-USD'
+		name: 'Avalanche/EUR',
+		symbol: 'AVAX-EUR'
 	},
 	{
-		name: 'Shiba Inu/USD',
-		symbol: 'SHIB-USD'
+		name: 'Shiba Inu/EUR',
+		symbol: 'SHIB-EUR'
 	},
 	{
-		name: 'WETH/USD',
-		symbol: 'WETH-USD'
+		name: 'WETH/EUR',
+		symbol: 'WETH-EUR'
 	},
 	{
-		name: 'Ethereum Classic/USD',
-		symbol: 'ETC-USD'
+		name: 'Ethereum Classic/EUR',
+		symbol: 'ETC-EUR'
 	},
 	{
-		name: 'Toncoin/USD',
-		symbol: 'TON-USD'
+		name: 'Toncoin/EUR',
+		symbol: 'TON-EUR'
 	},
 	{
-		name: 'Ethereum/USD',
-		symbol: 'ETH-USD'
+		name: 'Ethereum/EUR',
+		symbol: 'ETH-EUR'
 	},
 	{
-		name: 'Monero/USD',
-		symbol: 'XMR-USD'
+		name: 'Monero/EUR',
+		symbol: 'XMR-EUR'
 	},
 	{
-		name: 'OKB/USD',
-		symbol: 'OKB-USD'
+		name: 'OKB/EUR',
+		symbol: 'OKB-EUR'
 	},
 	{
-		name: 'Bitcoin Cash/USD',
-		symbol: 'BCH-USD'
+		name: 'Bitcoin Cash/EUR',
+		symbol: 'BCH-EUR'
 	},
 	{
-		name: 'Filecoin/USD',
-		symbol: 'FIL-USD'
+		name: 'Filecoin/EUR',
+		symbol: 'FIL-EUR'
 	},
 	{
-		name: 'Hedera/USD',
-		symbol: 'HBAR-USD'
+		name: 'Hedera/EUR',
+		symbol: 'HBAR-EUR'
 	}
 ]
 
 let prices = [
 	{
-		name: 'Bitcoin/USD',
-		symbol: 'BTC-USD',
+		name: 'Bitcoin/EUR',
+		symbol: 'BTC-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/bitcoin.df7c9480.svg"
 	},
 	{
-		name: 'Ethereum/USD',
-		symbol: 'ETH-USD',
+		name: 'Ethereum/EUR',
+		symbol: 'ETH-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/ethereum.57ab686e.svg"
 	},
 	{
-		name: 'Binance Coin/USD',
-		symbol: 'BNB-USD',
+		name: 'Binance Coin/EUR',
+		symbol: 'BNB-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/bnb.109d70ce.svg"
 	},
 	{
-		name: 'XRP/USD',
-		symbol: 'XRP-USD',
+		name: 'XRP/EUR',
+		symbol: 'XRP-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/xrp.c351e318.svg"
 	},
 	{
-		name: 'Cardano/USD',
-		symbol: 'ADA-USD',
+		name: 'Cardano/EUR',
+		symbol: 'ADA-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/ada.4b11b055.svg"
 	},
 	{
-		name: 'Aptos/USD',
-		symbol: 'APT-USD',
+		name: 'Aptos/EUR',
+		symbol: 'APT-EUR',
 		img: "https://www.cryptocompare.com/media/43881360/apt.png"
 	},
 	{
-		name: 'Polygon/USD',
-		symbol: 'MATIC-USD',
+		name: 'Polygon/EUR',
+		symbol: 'MATIC-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/okb.f00e7113.svg"
 	},
 	{
-		name: 'Solana/USD',
-		symbol: 'SOL-USD',
+		name: 'Solana/EUR',
+		symbol: 'SOL-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/sol.8e2ae057.svg"
 	},
 	{
-		name: 'Dogecoin/USD',
-		symbol: 'DOGE-USD',
+		name: 'Dogecoin/EUR',
+		symbol: 'DOGE-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/doge.60836ae5.svg"
 	}
 ]
 
 let buyTrade = [
 	{
-		name: 'Bitcoin/USD',
-		symbol: 'BTC-USD',
+		name: 'Bitcoin/EUR',
+		symbol: 'BTC-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/bitcoin.df7c9480.svg"
 	},
 	{
-		name: 'Ethereum/USD',
-		symbol: 'ETH-USD',
+		name: 'Ethereum/EUR',
+		symbol: 'ETH-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/ethereum.57ab686e.svg"
 	},
 	{
-		name: 'Stellar/USD',
-		symbol: 'XLM-USD',
+		name: 'Stellar/EUR',
+		symbol: 'XLM-EUR',
 		img: "	https://www.blockchain.com/explorer/_next/static/media/xlm.5a72c608.svg"
 	},
 	{
-		name: 'Solana/USD',
-		symbol: 'SOL-USD',
+		name: 'Solana/EUR',
+		symbol: 'SOL-EUR',
 		img: "https://www.blockchain.com/explorer/_next/static/media/sol.8e2ae057.svg"
 	},
 ]
@@ -498,7 +498,7 @@ if (document.getElementsByClassName("prices__body").length == 1) {
 
 				let div = document.createElement('div');
 				div.className = "prices__body-row";
-				div.innerHTML = `<a href=""><div class="body-row-name"><div class="body-row-name__img"><img src="${coinData['img']}" alt="bitcoin"></div><div class="body-row-name__text"><p>${coinName[0]}<span>${coinName[1]}</span></p></div></div></a><a href=""><div class="body-row-value"><p>$${price}<span class="${dropPercentage > 0 ? 'green' : 'red'}">${dropPercentage}%</span></p></div></a>`;
+				div.innerHTML = `<a href=""><div class="body-row-name"><div class="body-row-name__img"><img src="${coinData['img']}" alt="bitcoin"></div><div class="body-row-name__text"><p>${coinName[0]}<span>${coinName[1]}</span></p></div></div></a><a href=""><div class="body-row-value"><p>€${price}<span class="${dropPercentage > 0 ? 'green' : 'red'}">${dropPercentage}%</span></p></div></a>`;
 				document.getElementsByClassName("prices__body")[0].append(div);
 			}
 
@@ -533,7 +533,7 @@ if (document.getElementsByClassName("blocks__body").length == 1) {
 						</div>
 						<div class="blocks__body-item-bot">
 							<p>${coinName[0]}<span class="short">${coinName[1]}</span></p>
-							<p>$${price}<span class="${dropPercentage > 0 ? 'green2' : 'red2'}">${dropPercentage}%</span></p>
+							<p>€${price}<span class="${dropPercentage > 0 ? 'green2' : 'red2'}">${dropPercentage}%</span></p>
 						</div>
 					</div>`;
 				document.getElementsByClassName("blocks__body")[0].append(a);
@@ -561,7 +561,7 @@ function setElementHeaderPrices() {
 					if (status != 500) {
 						let a = document.createElement('a');
 						a.className = "row__item-link";
-						a.innerHTML = `<div class="row__item-unit"><p class="row__item-unit-text">${name}</p><p class="row__item-unit-value">$${price}<span class="${dropPercentage > 0 ? 'green' : 'red'}"><img src="img/arrow.svg" alt="">${dropPercentage}%</span></p></div>`;
+						a.innerHTML = `<div class="row__item-unit"><p class="row__item-unit-text">${name}</p><p class="row__item-unit-value">€${price}<span class="${dropPercentage > 0 ? 'green' : 'red'}"><img src="img/arrow.svg" alt="">${dropPercentage}%</span></p></div>`;
 						document.getElementsByClassName("row__item")[0].append(a);
 					}
 				}
