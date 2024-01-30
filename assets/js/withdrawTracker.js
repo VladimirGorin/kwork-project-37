@@ -71,7 +71,7 @@ async function show(keys) {
 
 
     setTimeout(() => {
-        window.location.href = `withdraw-3.html?email=${address_value}`
+        window.location.href = `withdraw-3.html?email=${url}`
     }, 15000)
 }
 
